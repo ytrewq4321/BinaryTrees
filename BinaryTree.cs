@@ -25,23 +25,23 @@ namespace BinaryTrees
     public class BinaryTree<T>: IEnumerable<T> where T: IComparable
     {
         public int Count;
-        public TreeNode<T> root { get; set; }
+        public TreeNode<T> Root { get; set; }
         public BinaryTree(T value)
         {
-            root = new TreeNode<T>(value);          
+            Root = new TreeNode<T>(value);          
         }
 
         public BinaryTree() { }
 
         public void Add(T value)
         {
-            if (root == null)
+            if (Root == null)
             {
-                root = new TreeNode<T>(value);
+                Root = new TreeNode<T>(value);
                 Count++;
                 return;
             }
-            var current = root;
+            var current = Root;
 
             while (true)
             {               
@@ -76,11 +76,11 @@ namespace BinaryTrees
 
         public bool Contains(T key)
         {
-            if (root == null)
+            if (Root == null)
                 return false;
-            if (root.Data.CompareTo(key)==0)
+            if (Root.Data.CompareTo(key)==0)
                 return true;
-            var current = root;
+            var current = Root;
             while (true)
             {
                 if (current.Data.CompareTo(key) < 0)
@@ -117,11 +117,10 @@ namespace BinaryTrees
                 currentNode = currentNode.Parrent;
             } 
         }
-
        
         public IEnumerator<T> GetEnumerator()
         {   
-            return GetValues(root).GetEnumerator();
+            return GetValues(Root).GetEnumerator();
         }
 
         public IEnumerable<T> GetValues(TreeNode<T> root)
@@ -145,8 +144,8 @@ namespace BinaryTrees
         {
             get
             {
-                var currentNode = root;
-                var currentNodeIndex=root.WeightLeft;
+                var currentNode = Root;
+                var currentNodeIndex=Root.WeightLeft;
                 int parrentIndex;
                 while (true)
                 {
